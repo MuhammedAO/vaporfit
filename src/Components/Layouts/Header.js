@@ -1,9 +1,22 @@
 import React from 'react'
-
-export default function Header() {
+import { AppBar, Toolbar, Typography } from '@material-ui/core'
+// import { withStyles } from '@material-ui/core/styles'
+const  Header = () => {
     return (
-        <div>
-           <h1>Header Section</h1> 
-        </div>
+        <AppBar position='static'>
+    <Toolbar>
+      <Typography
+        variant='h5'
+        color='inherit'
+      >
+        Exercise Database
+      </Typography>
+
+      {/* <Dialog /> */}
+    </Toolbar>
+  </AppBar>
     )
 }
+
+// export default withStyles(styles)(Header)
+export default Header
