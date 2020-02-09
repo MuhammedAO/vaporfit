@@ -1,12 +1,20 @@
-import React from 'react';
+import React,{Component, Fragment} from 'react';
 import './App.css';
+import {Header, Footer} from './Components/Layouts';
+import Exercises from './Components/Exercises'
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Welcome</h1>
-    </div>
-  );
+
+class App extends Component {
+  render(){
+    return (
+      <Fragment>
+        <Header/>
+        <Exercises/>
+        <Footer/>
+      </Fragment>
+    );
+  }
+  
 }
 
 export default App;
