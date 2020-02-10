@@ -9,7 +9,7 @@ const Header = () => {
           variant='h5'
           color='inherit'
         >
-          Exercise Database
+          vaporFit
       </Typography>
 
         {/* <Dialog /> */}
