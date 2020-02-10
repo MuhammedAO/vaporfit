@@ -3,7 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
-export default function Footer() {
+export default function Footer({muscles}) {
     return (
         <Paper square>
   <Tabs
@@ -13,9 +13,10 @@ export default function Footer() {
     centered
     aria-label="disabled tabs example"
   >
-    <Tab label="Active" />
-    <Tab label="Disabled" disabled />
-    <Tab label="Active" />
+  <Tab label="All"/>
+  {muscles.map(muscle =>
+    <Tab label={muscle} />
+   )}
   </Tabs>
 </Paper>
     )
