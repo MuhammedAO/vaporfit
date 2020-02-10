@@ -19,7 +19,7 @@ export default function Footer({muscles, category, onSelect}) {
   >
   <Tab label="All"/>
   {muscles.map(muscle =>
-    <Tab label={muscle} />
+    <Tab key={muscle} label={muscle} />
    )}
   </Tabs>
 </Paper>
