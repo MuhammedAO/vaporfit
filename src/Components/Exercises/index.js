@@ -15,7 +15,16 @@ const styles = {
 	}
 }
 
-export default function index({ exercises, category }) {
+export default function index({
+  exercises,
+  category,
+  onSelect,
+  exercise:{
+    id, 
+    title = 'Welcome', 
+  description = ' Please select an exercise from the list on the left',
+} })
+  {
 	return (
   <Grid container>
     <Grid item sm>
@@ -26,19 +35,17 @@ export default function index({ exercises, category }) {
           !category || category === muscles
 
             ? 	
-            <React.Fragment>
+            <React.Fragment key={muscles}>
               <Typography
                 variant="h5"
                 style={{ textTransform: 'capitalize' }}
               >
                 {muscles}
               </Typography>
-              <List component="ul" aria-label="secondary mailbox folders">
-                {exercises.map(({ title }) =>
-                  <ListItem button>
-                    <ListItemText 
-                    primary={title} 
-                    />
+              <List component="ul">
+                {exercises.map(({ id, title }) =>
+                  <ListItem button key={id} onClick={() => onSelect(id)}>
+                    <ListItemText primary={title}  />
                   </ListItem>
                 )}
               </List>
@@ -51,13 +58,13 @@ export default function index({ exercises, category }) {
     </Grid>
     <Grid item sm>
       <Paper style={styles.Paper}>
-        <Typography variant="h6">
-          Welcome
+    <Typography variant="h6">
+         {title} 
     </Typography>
         <Typography variant="subtitle1"
           style={{ marginTop: 20 }}
         >
-          Please select an exercise from the list on the left
+        {description}
     </Typography>
       </Paper>
     </Grid>
