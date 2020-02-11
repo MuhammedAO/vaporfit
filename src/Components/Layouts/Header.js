@@ -1,5 +1,7 @@
 import React from 'react'
 import { AppBar, Toolbar, Typography } from '@material-ui/core'
+import Create from '../Exercises/Dialogs/Create'
+
 // import { withStyles } from '@material-ui/core/styles'
 const Header = () => {
   return (
@@ -8,11 +10,11 @@ const Header = () => {
         <Typography
           variant='h5'
           color='inherit'
+          style={{flex:1}}
         >
           vaporFit
       </Typography>
-
-        {/* <Dialog /> */}
+      <Create/>
       </Toolbar>
     </AppBar>
   )
