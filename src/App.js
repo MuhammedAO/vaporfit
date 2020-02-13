@@ -40,12 +40,24 @@ category
     }))
   }
 
+  handleExerciseCreate = (exercise) => {
+    this.setState((prevState) => ({
+      exercises:[
+        ...prevState.exercises,
+        exercise
+      ]
+    }))
+  }
+
   render(){
     const exercises = this.getExercisesByMuscles()
     const  {category, exercise} = this.state
     return (
       <Fragment>
-        <Header/>
+        <Header
+        onExerciseCreate={this.handleExerciseCreate}
+        muscles={muscles}
+        />
         <Exercises 
         exercise={exercise}
         category={category}
