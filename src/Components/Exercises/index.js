@@ -5,6 +5,9 @@ import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import { ListItemSecondaryAction } from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 const styles = {
 	Paper: {
 		padding: 20,
@@ -23,7 +26,8 @@ export default function index({
     id, 
     title = 'Welcome', 
   description = ' Please select an exercise from the list on the left',
-} })
+}, onDelete })
+
   {
 	return (
   <Grid container>
@@ -46,6 +50,11 @@ export default function index({
                 {exercises.map(({ id, title }) =>
                   <ListItem button key={id} onClick={() => onSelect(id)}>
                     <ListItemText primary={title}  />
+                    <ListItemSecondaryAction>
+                      <IconButton onClick={() => onDelete(id)}>
+                        <DeleteIcon/>
+                      </IconButton>
+                    </ListItemSecondaryAction>
                   </ListItem>
                 )}
               </List>

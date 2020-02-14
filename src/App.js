@@ -18,13 +18,18 @@ class App extends Component {
   //2nd parameter is an empty object
   //when you call reduce(), it assigns the 1st value of the {} you're iterating over to the accumulator or you can set the inital value to an empty {}
   getExercisesByMuscles(){
+    const initExercises = muscles.reduce((exercises, muscles) => ({
+      ...exercises,
+      [muscles]:[]
+    }),{})
+    // console.log(muscles, initExercises)
     return Object.entries(
       this.state.exercises.reduce((exercises, exercise) => {
 
       const {muscles} = exercise
-      exercises[muscles] = exercises[muscles] ? [...exercises[muscles], exercise] : [exercise]
+      exercises[muscles] = [...exercises[muscles], exercise] 
       return exercises
-    }, {})
+    }, initExercises)
     )
   }
 
@@ -49,6 +54,12 @@ category
     }))
   }
 
+  handleExerciseDelete = id => {
+    this.setState((prevState) => ({
+    exercises: prevState.exercises.filter(ex => ex.id !== id)
+    }))
+  }
+
   render(){
     const exercises = this.getExercisesByMuscles()
     const  {category, exercise} = this.state
@@ -63,6 +74,7 @@ category
         category={category}
         exercises={exercises}
         onSelect={this.handleExerciseSelected}
+        onDelete={this.handleExerciseDelete}
         />
         <Footer 
         category={category}
