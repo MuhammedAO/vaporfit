@@ -41,7 +41,8 @@ category
 
   handleExerciseSelected = id => {
     this.setState((prevState) => ({
-      exercise: prevState.exercises.find(exercise => exercise.id === id)
+      exercise: prevState.exercises.find(exercise => exercise.id === id),
+      editMode:false
     }))
   }
 
@@ -56,13 +57,32 @@ category
 
   handleExerciseDelete = id => {
     this.setState((prevState) => ({
-    exercises: prevState.exercises.filter(ex => ex.id !== id)
+    exercises: prevState.exercises.filter(ex => ex.id !== id),
+    editMode:false,
+    exercise:{}
     }))
+  }
+
+  handleExerciseSelectEdit = id => {
+    this.setState((prevState) => ({
+      exercise: prevState.exercises.find(exercise => exercise.id === id),
+      editMode:true
+    }))
+  }
+
+  handleExerciseEdit = exercise => {
+    this.setState((prevState) => ({
+      exercises: [
+      ...prevState.exercises.filter(ex => ex.id !== exercise.id),
+      exercise
+      ],
+      exercise
+      }))
   }
 
   render(){
     const exercises = this.getExercisesByMuscles()
-    const  {category, exercise} = this.state
+    const  {category, exercise, editMode} = this.state
     return (
       <Fragment>
         <Header
@@ -73,8 +93,12 @@ category
         exercise={exercise}
         category={category}
         exercises={exercises}
+        editMode={editMode}
+        muscles={muscles}
         onSelect={this.handleExerciseSelected}
         onDelete={this.handleExerciseDelete}
+        onSelectEdit={this.handleExerciseSelectEdit}
+        onEdit={this.handleExerciseEdit}
         />
         <Footer 
         category={category}
