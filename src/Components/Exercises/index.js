@@ -8,6 +8,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { ListItemSecondaryAction } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import Form from './Form';
+
 const styles = {
 	Paper: {
 		padding: 20,
@@ -19,14 +22,21 @@ const styles = {
 }
 
 export default function index({
+  muscles,
   exercises,
+  exercise,
   category,
+  editMode,
   onSelect,
   exercise:{
     id, 
     title = 'Welcome', 
   description = ' Please select an exercise from the list on the left',
-}, onDelete })
+}, 
+onDelete,
+onSelectEdit ,
+onEdit
+})
 
   {
 	return (
@@ -51,6 +61,9 @@ export default function index({
                   <ListItem button key={id} onClick={() => onSelect(id)}>
                     <ListItemText primary={title}  />
                     <ListItemSecondaryAction>
+                      <IconButton onClick={() => onSelectEdit(id)}>
+                        <EditIcon/>
+                      </IconButton>
                       <IconButton onClick={() => onDelete(id)}>
                         <DeleteIcon/>
                       </IconButton>
@@ -67,7 +80,16 @@ export default function index({
     </Grid>
     <Grid item sm>
       <Paper style={styles.Paper}>
-    <Typography variant="h6">
+      {editMode 
+      ? 
+      <Form
+      exercise={exercise}
+      muscles={muscles}
+      onSubmit={onEdit}
+      /> 
+      : 
+      <React.Fragment>
+      <Typography variant="h6">
          {title} 
     </Typography>
         <Typography variant="subtitle1"
@@ -75,6 +97,7 @@ export default function index({
         >
         {description}
     </Typography>
+      </React.Fragment>}
       </Paper>
     </Grid>
 
