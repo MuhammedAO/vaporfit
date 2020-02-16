@@ -1,6 +1,6 @@
 import React from 'react'
 import { AppBar, Toolbar, Typography } from '@material-ui/core'
-import Create from '../Exercises/Dialogs/Create'
+import CreateDailog from '../Exercises/Dialog'
 
 // import { withStyles } from '@material-ui/core/styles'
 const Header = ({muscles, onExerciseCreate}) => {
@@ -14,7 +14,7 @@ const Header = ({muscles, onExerciseCreate}) => {
         >
           vaporFit
       </Typography>
-      <Create 
+      <CreateDailog 
       onCreate={onExerciseCreate}
       muscles={muscles}
       />
