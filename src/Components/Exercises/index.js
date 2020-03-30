@@ -79,24 +79,28 @@ onEdit
     </Grid>
     <Grid item xs={12} sm={6}>
       <Paper style={styles.Paper}>
+      <Typography 
+      variant="h6"
+      gutterBottom
+      >
+         {title} 
+    </Typography> 
       {editMode 
       ? 
       <Form
+      key={id}
       exercise={exercise}
       muscles={muscles}
       onSubmit={onEdit}
       /> 
       : 
-      <React.Fragment>
-      <Typography variant="h6">
-         {title} 
-    </Typography>
+     
+
         <Typography variant="subtitle1"
-          style={{ marginTop: 20 }}
         >
         {description}
     </Typography>
-      </React.Fragment>}
+     }
       </Paper>
     </Grid>
 
