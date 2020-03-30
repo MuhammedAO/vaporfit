@@ -42,6 +42,8 @@ class Create extends React.Component {
       <Dialog 
       open={open}
       onClose={this.handleToggle}
+      fullwidth
+      maxWidth='xs'
       >
       <DialogTitle>Choose Exercise</DialogTitle>
       <DialogContent>
