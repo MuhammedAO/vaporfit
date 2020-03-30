@@ -4,14 +4,9 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import { withStyles } from '@material-ui/core/styles'
+// import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button';
 
-const styles = theme =>  ({
-    formControl:{
-      width:300
-    }
-   })
 
    class Form extends Component {
     
@@ -26,11 +21,6 @@ const styles = theme =>  ({
       }
     }
 
-    componentWillReceiveProps({exercise}) {
-    this.setState({
-      ...exercise
-    })
-    }
     
     
     handleChange = name => ({target:{ value}}) => {
@@ -47,12 +37,10 @@ const styles = theme =>  ({
          id: this.state.title.toLowerCase().replace(/ /g, '-'),
          ...this.state,
        })
-   
-       this.setState(this.getInitState())
       }
 
     render() {
-        const {classes, exercise, muscles : categories} = this.props
+        const { exercise, muscles : categories} = this.props
         const {title, description, muscles} = this.state
         return (
             <React.Fragment>
@@ -61,10 +49,10 @@ const styles = theme =>  ({
           value={title}
           label="Title"
           onChange={this.handleChange('title')}
-          className={classes.formControl}
+          fullWidth
         />
         <br/>
-        <FormControl className={classes.formControl}>
+        <FormControl fullWidth>
         <InputLabel>Muscles</InputLabel>
         <Select
           value={muscles}
@@ -84,7 +72,7 @@ const styles = theme =>  ({
           onChange={this.handleChange('description')}
           multiline
           rows='4'
-          className={classes.formControl}
+          fullWidth
         />
         <br/>
         <Button 
@@ -92,13 +80,14 @@ const styles = theme =>  ({
       color="primary" 
       variant="contained"
       onClick={this.handleSubmit}
+      disabled={!title || !muscles}
       >
         {exercise ? 'Edit' : 'Create'}
       </Button>
        </form>
-            </React.Fragment>
+        </React.Fragment>
         )
     }
 }
 
-export default withStyles(styles)(Form)
+export default Form
