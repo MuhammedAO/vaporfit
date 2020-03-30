@@ -52,6 +52,7 @@ onEdit
               <Typography
                 variant="h5"
                 style={{ textTransform: 'capitalize' }}
+                color='secondary'
               >
                 {muscles}
               </Typography>
@@ -60,10 +61,10 @@ onEdit
                   <ListItem button key={id} onClick={() => onSelect(id)}>
                     <ListItemText primary={title}  />
                     <ListItemSecondaryAction>
-                      <IconButton onClick={() => onSelectEdit(id)}>
+                      <IconButton color='primary' onClick={() => onSelectEdit(id)}>
                         <EditIcon/>
                       </IconButton>
-                      <IconButton onClick={() => onDelete(id)}>
+                      <IconButton color='primary' onClick={() => onDelete(id)}>
                         <DeleteIcon/>
                       </IconButton>
                     </ListItemSecondaryAction>
@@ -82,6 +83,7 @@ onEdit
       <Typography 
       variant="h6"
       gutterBottom
+      color='secondary'
       >
          {title} 
     </Typography> 

@@ -36,7 +36,9 @@ class Create extends React.Component {
       <React.Fragment>
       <Fab 
        onClick={this.handleToggle}
-       size="small">
+       size="small"
+       color='secondary'
+       >
        <Add/>
      </Fab>
       <Dialog 
