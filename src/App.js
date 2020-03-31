@@ -4,6 +4,7 @@ import './App.css';
 import {Header, Footer} from './Components/Layouts';
 import Exercises from './Components/Exercises'
 import {muscles, exercises} from './store'
+import {Provider} from './context'
 
 
 class App extends Component {
@@ -81,16 +82,21 @@ category
       }))
   }
 
+  getContext = () => ({
+    muscles,
+    ...this.state,
+    onCreate: this.handleExerciseCreate
+  })
+
   render(){
     const exercises = this.getExercisesByMuscles()
     const  {category, exercise, editMode} = this.state
+
     return (
+      <Provider value={this.getContext()}>
       <Fragment>
       <CssBaseline/>
-        <Header
-        onExerciseCreate={this.handleExerciseCreate}
-        muscles={muscles}
-        />
+        <Header/>
         <Exercises 
         exercise={exercise}
         category={category}
@@ -108,6 +114,7 @@ category
         onSelect={this.handleSelectedCategory}
         />
       </Fragment>
+      </Provider>
     );
   }
   
