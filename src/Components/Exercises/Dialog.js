@@ -6,6 +6,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import {Add} from '@material-ui/icons';
 import Fab from '@material-ui/core/Fab';
 import Form from './Form';
+import {withContext} from '../../context'
 
 
 class Create extends React.Component {
@@ -34,34 +35,34 @@ class Create extends React.Component {
     
     return (
       <React.Fragment>
-      <Fab 
-       onClick={this.handleToggle}
-       size="small"
-       color='secondary'
-       >
-       <Add/>
-     </Fab>
-      <Dialog 
-      open={open}
-      onClose={this.handleToggle}
-      fullwidth
-      maxWidth='xs'
-      >
-      <DialogTitle>Choose Exercise</DialogTitle>
-      <DialogContent>
-      <DialogContentText>
-       Fill out the form below
-      </DialogContentText>
-       <Form
-       muscles={muscles}
-       onSubmit={this.handleFormSubmit}
-       />
-    </DialogContent>
-  </Dialog>
-      </React.Fragment>
+        <Fab 
+         onClick={this.handleToggle}
+         size="small"
+         color='secondary'
+         >
+         <Add/>
+       </Fab>
+        <Dialog 
+        open={open}
+        onClose={this.handleToggle}
+        fullwidth
+        maxWidth='xs'
+        >
+        <DialogTitle>Choose Exercise</DialogTitle>
+        <DialogContent>
+        <DialogContentText>
+         Fill out the form below
+        </DialogContentText>
+         <Form
+         muscles={muscles}
+         onSubmit={this.handleFormSubmit}
+         />
+      </DialogContent>
+    </Dialog>
+        </React.Fragment>
   )
   }
     
 }
 
-export default Create
+export default withContext(Create)

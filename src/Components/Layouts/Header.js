@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Typography } from '@material-ui/core'
 import CreateDailog from '../Exercises/Dialog'
 
 // import { withStyles } from '@material-ui/core/styles'
-const Header = ({muscles, onExerciseCreate}) => {
+const Header = () => {
   return (
     <AppBar position='static'>
       <Toolbar>
@@ -15,8 +15,6 @@ const Header = ({muscles, onExerciseCreate}) => {
           vaporFit
       </Typography>
       <CreateDailog 
-      onCreate={onExerciseCreate}
-      muscles={muscles}
       />
       </Toolbar>
     </AppBar>
